@@ -1,3 +1,5 @@
+@import "mdb-react-ui-kit/dist/scss/free/variables";
+
 input[type=color].form-control {
   &::-webkit-color-swatch, &::-webkit-color-swatch-wrapper {
     border: none !important;
@@ -18,4 +20,18 @@ input[type=color].form-control {
 
 .text-button {
   cursor: pointer !important;
+}
+
+
+
+.text-hover-blue {
+  & {
+    transition: all .5s ease-in-out;
+  }
+  &:hover {
+    color: $info;
+  }
+  :hover > &, &:hover {
+    transform: rotate(180deg);
+  }
 }

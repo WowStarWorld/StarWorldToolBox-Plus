@@ -45,17 +45,9 @@ export class Component extends React.Component {
         let number = this.state.currentInput;
         try {
             let output = parseInt(number, from).toString(to);
-            this.setState(
-                {
-                    "currentOutput": (output === "NaN") ? "空" : output
-                }
-            );
+            this.setState({ "currentOutput": (output === "NaN") ? "空" : output });
         } catch {
-            this.setState(
-                {
-                    "currentOutput": "空"
-                }
-            );
+            this.setState({ "currentOutput": "空" });
         }
     }
 
@@ -72,22 +64,8 @@ export class Component extends React.Component {
 
     render () {
         let that = this;
-        let from = range(2, 37).map(
-            (i) => {
-                return {
-                    label: `从${i}进制`,
-                    value: i,
-                };
-            }
-        );
-        let to = range(2, 37).map(
-            (i) => {
-                return {
-                    label: `到${i}进制`,
-                    value: i,
-                };
-            }
-        );
+        let from = range(2, 37).map((i) => ({ label: `从${i}进制`, value: i }));
+        let to = range(2, 37).map((i) => ({ label: `到${i}进制`, value: i }));
         return (
             <>
                 <br/><br/>
@@ -95,7 +73,7 @@ export class Component extends React.Component {
                     <MDBBtn color="info" onClick={() => that.convert()}>转换</MDBBtn>
                     <br/><br/>
                     <Select value={this.state.from} options={from} onSelect={(value) => this.setState({from: value})}></Select>
-                    &nbsp;&nbsp;<span role="button" onClick={() => this.switch()} className="not-a-text text-button">&nbsp;&lt;-&gt;&nbsp;</span>&nbsp;&nbsp;
+                    <span role="button" onClick={() => this.switch()} className="not-a-text text-button" style={{marginLeft: "1rem", marginRight: "1rem"}}><i ref="icon-switch" className="fa fa-repeat text-hover-blue"/></span>
                     <Select value={this.state.to} options={to} onSelect={(value) => this.setState({to: value})}></Select>
                     <br/><br/>
                     <MDBTextArea label="请输入要转换进制的数字" onInput={(e) => {this.setState({"currentInput": e.target["value"]})}}></MDBTextArea>
