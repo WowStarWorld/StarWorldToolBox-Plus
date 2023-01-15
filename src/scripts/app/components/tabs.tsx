@@ -40,13 +40,21 @@ export const AllCategories: {[index: string]: {title: string | JSX.Element, chil
     }
 };
 
-export function registerTool (buttonName: string, path: string, icon: string = null, category: string = null, customProps: any = {}) {
-    let func = (index) => <MDBBtn {...customProps} onClick={() => location.hash = path} style={{textTransform: "none", marginRight: ".4rem", marginTop: ".4rem"}}>{icon ? (<><MDBIcon icon={icon}/>&nbsp;</>) : ""}{buttonName}</MDBBtn>;
+export function registerTool (buttonName: string, path: string, icon: string[] | string = null, category: string = null, customProps: any = {}) {
+    let iconList: string[] = (typeof icon === "string") ? [icon] : icon;
+    let iconElement = (iconList.length == 1) ? <MDBIcon icon={iconList[0]}/> : <RandomIconComponent list={iconList} timeout={250}/>;
+    let callback = (index) => (
+        <MDBBtn key={index} onClick={ () => location.hash = path } style={
+            { textTransform: "none", marginRight: ".4rem", marginTop: ".4rem" }
+        } {...customProps}>
+            { icon ? (<>{iconElement}&nbsp;</>) : "" }{ buttonName }
+        </MDBBtn>
+    );
     if (typeof category === "string" && category in AllCategories) {
-        AllCategories[category].childrens.push(func);
+        AllCategories[category].childrens.push(callback);
     }
-    AllCategories["all"].childrens.push(func);
-    return func;
+    AllCategories["all"].childrens.push(callback);
+    return callback;
 }
 
 export interface TabProps {

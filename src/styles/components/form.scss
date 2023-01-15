@@ -11,3 +11,11 @@ input[type=color].form-control {
     border-radius: .2rem;
   }
 }
+
+.not-a-text {
+  user-select: none !important;
+}
+
+.text-button {
+  cursor: pointer !important;
+}
