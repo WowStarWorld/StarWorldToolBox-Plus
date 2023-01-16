@@ -1,8 +1,7 @@
 import React from "react";
 
 import { MDBContainer, MDBInputGroup } from "mdb-react-ui-kit";
-import { FloatButton, Select, Tabs } from "antd";
-import { RestOutlined } from "@ant-design/icons";
+import { Select, Tabs } from "antd";
 
 import * as config from "../../config";
 
@@ -75,7 +74,6 @@ export class Component extends React.Component {
                 <MDBContainer>
                     <Tabs items={this.getItems() as any} tabPosition={config.getStorageItem("general.tabs.position", "left")}/>
                 </MDBContainer>
-                <FloatButton icon={<RestOutlined/>} tooltip="重置" style={{right: 80}} onClick={() => {localStorage.clear(); location.reload();}}/>
             </>
         );
     }
