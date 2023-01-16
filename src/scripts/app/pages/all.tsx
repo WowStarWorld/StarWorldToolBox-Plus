@@ -19,9 +19,7 @@ export let AllPages = {
 
 function getCurrentPage () {
     let path = location.hash.slice(1);
-    if (path in AllPages) {
-        return AllPages[path]();
-    }
+    if (path in AllPages) return AllPages[path]();
     return (
         <MDBContainer>
             <br/><br/>

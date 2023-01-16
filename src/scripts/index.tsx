@@ -21,5 +21,25 @@ $(window).on("hashchange", () => location.reload());
 RootJQuery.fadeIn(500);
 
 if (getStorageItem("general.theme", "light") == "dark") {
-    $(document.documentElement).css("filter", "invert()")
+    $(document.documentElement).css(
+        {
+            "filter": "invert(100%)",
+            "--sw-theme": "dark",
+            "--sw-theme-light": "invert(100%)",
+            "--sw-theme-dark": "invert(0%)",
+            "--sw-background-light": "#000000",
+            "--sw-background-dark": "#ffffff"
+        }
+    );
+} else {
+    $(document.documentElement).css(
+        {
+            "filter": "invert(0%)",
+            "--sw-theme": "light",
+            "--sw-theme-light": "invert(0%)",
+            "--sw-theme-dark": "invert(100%)",
+            "--sw-background-light": "#ffffff",
+            "--sw-background-dark": "#000000"
+        }
+    );
 }

@@ -53,8 +53,8 @@ export class Component extends React.Component {
                 <br/><br/>
                 <MDBContainer>
                     <MDBBtnGroup>
-                        <MDBBtn color="info" onClick={() => that.encode()}>编码</MDBBtn>
-                        <MDBBtn color="info" onClick={() => that.decode()}>解码</MDBBtn>
+                        <MDBBtn onClick={() => that.encode()}>编码</MDBBtn>
+                        <MDBBtn onClick={() => that.decode()}>解码</MDBBtn>
                     </MDBBtnGroup>
                     <br/><br/><br/>
                     <MDBTextArea label="请输入要编码的文本" onInput={(e) => {this.setState({"currentInput": e.target["value"]})}}></MDBTextArea>
