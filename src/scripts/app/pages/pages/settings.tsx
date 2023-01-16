@@ -32,6 +32,13 @@ export class Component extends React.Component {
                 label: "常规",
                 children: (
                     <>
+                        <MDBInputGroup textBefore="主题:" noBorder>
+                            <Select
+                                options={[{label: "亮", value: "light"}, {label: "暗", value: "dark"}]}
+                                defaultValue={config.getStorageItem("general.theme", "light")}
+                                onSelect={(value) => config.setStorageItem("general.theme", value)}
+                            />
+                        </MDBInputGroup><br/>
                         <MDBInputGroup textBefore="工具箱标题:" noBorder>
                             <input
                                 className='form-control rounded' type='text'

@@ -4,6 +4,7 @@ import ANTDLocale from "antd/locale/zh_CN";
 
 import { createRoot } from "react-dom/client";
 import { ConfigProvider } from "antd";
+import { getStorageItem } from "./app/config";
 
 export const RootJQuery = $("#app-container").hide();
 export const Root = createRoot(RootJQuery[0]);
@@ -18,3 +19,7 @@ Root.render(
 $(window).on("hashchange", () => location.reload());
 
 RootJQuery.fadeIn(500);
+
+if (getStorageItem("general.theme", "light") == "dark") {
+    $(document.documentElement).css("filter", "invert()")
+}

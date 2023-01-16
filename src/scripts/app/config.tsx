@@ -1,5 +1,15 @@
 import { get as lodashGet, set as lodashSet } from "lodash";
-export const githubURL = "https://github.com/WowStarWorld/StarWorldToolBox-Plus";
+
+
+if (localStorage.getItem("settings")) {
+    try {
+        JSON.parse(localStorage.getItem("settings"));
+    } catch {
+        localStorage.setItem("settings", "{}");
+    }
+} else {
+    localStorage.setItem("settings", "{}");
+}
 
 export function getStorageItem(name: string, defaultValue: any = undefined) {
     let value = lodashGet(JSON.parse(localStorage.getItem("settings")), name);
@@ -13,13 +23,5 @@ export function setStorageItem(name: string, value: any) {
     return settings;
 }
 
-let settingsRaw = localStorage.getItem("settings");
-if (settingsRaw) {
-    try {
-        JSON.parse(settingsRaw);
-    } catch {
-        localStorage.setItem("settings", "{}");
-    }
-} else {
-    localStorage.setItem("settings", "{}");
-}
+// Constants
+export const githubURL = "https://github.com/WowStarWorld/StarWorldToolBox-Plus";
