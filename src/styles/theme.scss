@@ -1,0 +1,25 @@
+.sw-theme-dark {
+  & {
+    filter: invert(85%);
+    --sw-theme: dark;
+    --sw-theme-light: invert(100%);
+    --sw-theme-dark: invert(0%);
+    --sw-background-light: #262626;
+    --sw-background-dark: #bebebe;
+  }
+
+  input[type=color], iframe {
+    @extend .sw-theme-dark;
+    filter: invert(100%);
+  }
+
+}
+
+.sw-theme-light {
+  filter: invert(0%);
+  --sw-theme: light;
+  --sw-theme-light: invert(0%);
+  --sw-theme-dark: invert(85%);
+  --sw-background-light: #bebebe;
+  --sw-background-dark: #262626;
+}

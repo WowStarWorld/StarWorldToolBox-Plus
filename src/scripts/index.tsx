@@ -20,26 +20,6 @@ $(window).on("hashchange", () => location.reload());
 
 RootJQuery.fadeIn(500);
 
-if (getStorageItem("general.theme", "light") == "dark") {
-    $(document.documentElement).css(
-        {
-            "filter": "invert(85%)",
-            "--sw-theme": "dark",
-            "--sw-theme-light": "invert(100%)",
-            "--sw-theme-dark": "invert(0%)",
-            "--sw-background-light": "#262626",
-            "--sw-background-dark": "#bebebe"
-        }
-    );
-} else {
-    $(document.documentElement).css(
-        {
-            "filter": "invert(0%)",
-            "--sw-theme": "light",
-            "--sw-theme-light": "invert(0%)",
-            "--sw-theme-dark": "invert(85%)",
-            "--sw-background-light": "#bebebe",
-            "--sw-background-dark": "#262626"
-        }
-    );
-}
+$(document.documentElement).addClass(
+    `sw-theme-${getStorageItem("general.theme") === "dark" ? "dark" : "light"}`
+);
