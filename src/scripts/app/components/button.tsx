@@ -2,11 +2,12 @@ import React from "react";
 
 import { MDBTextArea, MDBInput } from "mdb-react-ui-kit";
 import { FloatButton, Modal } from "antd";
-import { SyncOutlined, PlusCircleOutlined, ExclamationCircleOutlined } from "@ant-design/icons";
+import { SyncOutlined, PlusCircleOutlined, ExclamationCircleOutlined, SettingOutlined } from "@ant-design/icons";
 
 import { githubURL } from "../config";
 
 export interface ButtonsProps {
+    // Issues
     modalIssues: boolean;
     modalIssuesTitle: string;
     modalIssuesContent: string;
@@ -17,9 +18,10 @@ export class AppButtons extends React.Component<any, ButtonsProps> {
     constructor (props) {
         super (props);
         this.state = {
+            // Issues
             modalIssues: false,
             modalIssuesContent: "",
-            modalIssuesTitle: ""
+            modalIssuesTitle: "",
         };
     }
 
@@ -34,6 +36,7 @@ export class AppButtons extends React.Component<any, ButtonsProps> {
         return (
             <>
                 <FloatButton.Group trigger="click" icon={<PlusCircleOutlined/>}>
+                    <FloatButton icon={<SettingOutlined/>} href="#/settings"/>
                     <FloatButton icon={<ExclamationCircleOutlined />} onClick={() => this.setState({modalIssues: !this.state.modalIssues})}/>
                     <FloatButton icon={<SyncOutlined/>} onClick={() => location.reload()}/>
                     <FloatButton.BackTop visibilityHeight={0}/>

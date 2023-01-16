@@ -5,6 +5,8 @@ import {
     MDBNavbarLink, MDBNavbarNav, MDBNavbarToggler
 } from "mdb-react-ui-kit";
 
+import * as config from "../config";
+
 export interface NavbarProps {
     appid: string;
 }
@@ -24,7 +26,7 @@ export class AppNavbar extends React.Component<NavbarProps, NavbarStates> {
         return (
           <MDBNavbar expand="lg" light bgColor="light" id={`${this.props.appid}-navbar`} sticky>
               <MDBContainer>
-                  <MDBNavbarBrand href="/">StarWorld 工具箱</MDBNavbarBrand>
+                  <MDBNavbarBrand href="/">{config.getStorageItem("general.title", "StarWorld 工具箱")}&nbsp;</MDBNavbarBrand>
                   <MDBNavbarToggler onClick={() => this.setState({ showNavbarBasic: !this.state.showNavbarBasic })}>
                       <MDBIcon icon="bars" fas />
                   </MDBNavbarToggler>

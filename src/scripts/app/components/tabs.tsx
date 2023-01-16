@@ -2,11 +2,20 @@ import React from "react";
 
 import { Tabs } from "antd";
 import { MDBContainer, MDBBtn, MDBIcon } from "mdb-react-ui-kit";
+import { getStorageItem } from "../config";
+
+export interface RandomIconProps {
+    list: Array<string>;
+    timeout: number;
+}
+
+export interface RandomIconStates {
+    currentText: string;
+}
 
 // 随机MDBIcon图标
-export class RandomIconComponent extends React.Component<{list: Array<string>; timeout: number}> {
+export class RandomIconComponent extends React.Component<RandomIconProps, RandomIconStates> {
 
-    public readonly state: { currentText: string; };
     public id: number;
 
     constructor (props) {
@@ -64,21 +73,17 @@ export interface TabProps {
 export class AppTabs extends React.Component<TabProps, any> {
     getItems () {
         return Object.values(AllCategories).map(
-            (v, i) => {
-                let childrens: JSX.Element[] = v.childrens.map(
-                    (i, n) => {
-                        return i(n);
-                    }
+            (value, index) => {
+                let childrens: JSX.Element[] = value.childrens.map(
+                    (_value, _index) => _value(_index)
                 );
-                if (childrens.length <= 0) childrens = [
-                    <h4 key={0}>暂无内容</h4>
-                ];
+                if (childrens.length <= 0) childrens = [ <h4 key={0}>暂无内容</h4> ];
                 return {
-                    label: (<>&nbsp;&nbsp;{v.title}&nbsp;&nbsp;</>),
+                    label: (<>&nbsp;&nbsp;{value.title}&nbsp;&nbsp;</>),
                     children: (
                         <>{...childrens}</>
                     ),
-                    key: `${this.props.appid}-tabs-${i}`
+                    key: `${this.props.appid}-tabs-${index}`
                 }
             }
         );
@@ -87,7 +92,7 @@ export class AppTabs extends React.Component<TabProps, any> {
     render () {
         return (
             <MDBContainer>
-                <Tabs tabPosition="left" items={this.getItems()}/>
+                <Tabs tabPosition={getStorageItem("general.tabs.position", "left")} items={this.getItems()}/>
             </MDBContainer>
         );
     }
