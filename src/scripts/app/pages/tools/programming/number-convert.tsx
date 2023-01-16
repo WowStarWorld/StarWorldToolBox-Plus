@@ -1,6 +1,6 @@
 import React from "react";
 
-import { MDBBtn, MDBContainer, MDBTextArea } from "mdb-react-ui-kit";
+import { MDBContainer, MDBTextArea } from "mdb-react-ui-kit";
 import { registerTool } from "../../../components/tabs";
 import { Select } from "antd";
 
@@ -18,7 +18,7 @@ export default {
     render, path
 }
 
-registerTool("进制转换工具", path, "clone", "other");
+registerTool("进制转换工具", path, "copy", "other");
 
 export class Component extends React.Component {
 
@@ -51,29 +51,22 @@ export class Component extends React.Component {
         }
     }
 
-    switch () {
-        let from = this.state.from;
-        let to = this.state.to;
-        this.setState(
-            {
-                from: to,
-                to: from,
-            }
-        );
-    }
+    switch () { this.setState({ from: this.state.to, to: this.state.from }); }
 
     render () {
         let that = this;
-        let from = range(2, 37).map((i) => ({ label: `从${i}进制`, value: i }));
-        let to = range(2, 37).map((i) => ({ label: `到${i}进制`, value: i }));
+        let numberRange = range(2, 37);
+        let from = numberRange.map((i) => ({ label: `从${i}进制`, value: i }));
+        let to = numberRange.map((i) => ({ label: `到${i}进制`, value: i }));
+        let convertCallback = () => that.convert();
+        let switchCallback = () => that.switch();
         return (
             <>
                 <br/><br/>
                 <MDBContainer>
-                    <MDBBtn color="info" onClick={() => that.convert()}>转换</MDBBtn>
-                    <br/><br/>
+                    <span title="转换" role="button" onClick={convertCallback} className="not-a-text" style={{marginRight: "1rem"}}><i className="sw-text-shadow far fa-compass" style={{marginRight: ".25rem"}}/>转换</span>
                     <Select value={this.state.from} options={from} onSelect={(value) => this.setState({from: value})}></Select>
-                    <span role="button" onClick={() => this.switch()} className="not-a-text text-button" style={{marginLeft: "1rem", marginRight: "1rem"}}><i ref="icon-switch" className="fa fa-repeat text-hover-blue"/></span>
+                    <span title="切换" role="button" onClick={switchCallback} className="not-a-text text-button" style={{marginRight: "1rem", marginLeft: "1rem"}}><i className="sw-text-shadow fa fa-repeat text-hover-blue"/></span>
                     <Select value={this.state.to} options={to} onSelect={(value) => this.setState({to: value})}></Select>
                     <br/><br/>
                     <MDBTextArea label="请输入要转换进制的数字" onInput={(e) => {this.setState({"currentInput": e.target["value"]})}}></MDBTextArea>
@@ -84,4 +77,3 @@ export class Component extends React.Component {
         );
     }
 }
-

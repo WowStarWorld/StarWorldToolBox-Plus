@@ -22,8 +22,6 @@ input[type=color].form-control {
   cursor: pointer !important;
 }
 
-
-
 .text-hover-blue {
   & {
     transition: all .5s ease-in-out;
@@ -31,7 +29,7 @@ input[type=color].form-control {
   &:hover {
     color: $info;
   }
-  :hover > &, &:hover {
+  &:hover {
     transform: rotate(180deg);
   }
 }

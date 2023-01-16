@@ -2,6 +2,8 @@ import React from "react";
 
 import AppNavbar from "./components/navbar";
 import AppTabs from "./components/tabs";
+import AppButtons from "./components/button";
+
 import CurrentPage from "./pages/all";
 
 export interface AppProperties {
@@ -31,22 +33,19 @@ export class App extends React.Component<AppProperties> {
 
     render () {
         let that = this;
-        if (location.hash === "#" || location.hash === "") {
-            return (
-                <>
-                    <AppNavbar appid={this.id}/>
-                    <br/><br/>
-                    <AppTabs appid={this.id}/>
-                </>
-            );
-        } else {
-            return (
-                <>
-                    <AppNavbar appid={this.id}/>
-                    { CurrentPage }
-                </>
-            );
-        }
+        return (
+            <>
+                <AppNavbar appid={this.id}/>
+                {
+                    (location.hash.length < 2) ? (
+                        <>
+                            <br/><br/><AppTabs appid={this.id}/>
+                        </>
+                    ) : CurrentPage
+                }
+                <AppButtons/>
+            </>
+        );
     }
 }
 export default App;
