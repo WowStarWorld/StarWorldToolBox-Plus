@@ -35,7 +35,6 @@
     "node-polyfill-webpack-plugin": "^2.0.1",
     "postcss": "^8.4.19",
     "postcss-loader": "^7.0.1",
-    "prettier": "^2.8.1",
     "rimraf": "*",
     "sass": "^1.56.1",
     "sass-loader": "^13.2.0",

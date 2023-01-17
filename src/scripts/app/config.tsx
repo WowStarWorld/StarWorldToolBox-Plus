@@ -1,7 +1,7 @@
 import { get as lodashGet, set as lodashSet, hasIn as lodashHasIn } from "lodash";
 
 
-if (localStorage.getItem("settings")) {
+if (typeof localStorage !== "undefined" && localStorage.getItem("settings")) {
     try {
         JSON.parse(localStorage.getItem("settings"));
     } catch {

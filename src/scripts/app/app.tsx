@@ -15,7 +15,7 @@ export class App extends React.Component<AppProperties> {
     public readonly state: {
         // GUI
         showNavbarBasic: boolean;
-    }
+    };
 
     public id: string;
 

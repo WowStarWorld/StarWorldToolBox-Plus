@@ -15,7 +15,7 @@ export function render () {
 
 export default {
     render, path
-}
+};
 
 export class Component extends React.Component {
 
@@ -61,7 +61,7 @@ export class Component extends React.Component {
                     label: value.label,
                     children: value.children,
                     key: index
-                }
+                };
             }
         );
     }

@@ -13,7 +13,7 @@ export function render () {
 
 export default {
     render, path
-}
+};
 
 registerTool("Base64 编码工具", path, "layer-group", "programming");
 
@@ -57,7 +57,7 @@ export class Component extends React.Component {
                         <MDBBtn onClick={() => that.decode()}>解码</MDBBtn>
                     </MDBBtnGroup>
                     <br/><br/><br/>
-                    <MDBTextArea label="请输入要编码的文本" onInput={(e) => {this.setState({"currentInput": e.target["value"]})}}></MDBTextArea>
+                    <MDBTextArea label="请输入要编码的文本" onInput={(e) => {this.setState({"currentInput": e.target["value"]});}}></MDBTextArea>
                     <br/>
                     <MDBTextArea className="form-control" placeholder={"空"} value={this.state.currentOutput}></MDBTextArea>
                 </MDBContainer>

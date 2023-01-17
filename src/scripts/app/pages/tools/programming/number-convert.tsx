@@ -16,7 +16,7 @@ export function render () {
 
 export default {
     render, path
-}
+};
 
 registerTool("进制转换工具", path, "copy", "other");
 
@@ -69,7 +69,7 @@ export class Component extends React.Component {
                     <span title="切换" role="button" onClick={switchCallback} className="not-a-text text-button" style={{marginRight: "1rem", marginLeft: "1rem"}}><i className="sw-text-shadow fa fa-repeat text-hover-blue"/></span>
                     <Select value={this.state.to} options={to} onSelect={(value) => this.setState({to: value})}></Select>
                     <br/><br/>
-                    <MDBTextArea label="请输入要转换进制的数字" onInput={(e) => {this.setState({"currentInput": e.target["value"]})}}></MDBTextArea>
+                    <MDBTextArea label="请输入要转换进制的数字" onInput={(e) => {this.setState({"currentInput": e.target["value"]});}}></MDBTextArea>
                     <br/>
                     <MDBTextArea className="form-control" placeholder={"空"} value={this.state.currentOutput}></MDBTextArea>
                 </MDBContainer>

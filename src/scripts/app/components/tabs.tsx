@@ -84,7 +84,7 @@ export class AppTabs extends React.Component<TabProps, any> {
                         <>{...childrens}</>
                     ),
                     key: `${this.props.appid}-tabs-${index}`
-                }
+                };
             }
         );
     }

@@ -15,7 +15,7 @@ export let AllTools = {
 export let AllPages = {
     ...AllTools,
     [PAGE_SETTINGS.path]: PAGE_SETTINGS.render
-}
+};
 
 function getCurrentPage () {
     let path = location.hash.slice(1);

@@ -19,6 +19,7 @@ module.exports = {
     rules: {
         'no-return-assign': 'off',
         'eqeqeq': 'off',
+        'semi': [2],
         '@typescript-eslint/no-require-imports': 'off',
         '@typescript-eslint/explicit-member-accessibility': 'off',
         '@typescript-eslint/member-ordering': 'off',
