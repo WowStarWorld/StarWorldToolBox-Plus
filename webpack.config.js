@@ -5,6 +5,7 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
+const ESLintPlugin = require("eslint-webpack-plugin");
 
 const webpackPlugins = [
     /*
@@ -16,6 +17,15 @@ const webpackPlugins = [
       }
     ),
     */
+    new ESLintPlugin(
+        {
+            extensions: ["tsx", "ts", "jsx", "js"],
+            files: [
+                "./src/**/*.ts", "./src/**/*.tsx",
+                "./src/**/*.js", "./src/**/*.jsx"
+            ],
+        }
+    ),
     new HtmlWebpackPlugin(
         {
             template: "src/index.html",

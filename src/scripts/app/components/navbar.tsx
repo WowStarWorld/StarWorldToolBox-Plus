@@ -24,7 +24,7 @@ export class AppNavbar extends React.Component<NavbarProps, NavbarStates> {
 
     render() {
         return (
-          <MDBNavbar expand="lg" light bgColor="light" id={`${this.props.appid}-navbar`} sticky>
+          <MDBNavbar expand="lg" light bgColor="light" id={`${this.props.appid}-navbar`} sticky style={{overflow: "hidden"}}>
               <MDBContainer>
                   <MDBNavbarBrand href="/">{config.getStorageItem("general.title", "StarWorld 工具箱")}&nbsp;</MDBNavbarBrand>
                   <MDBNavbarToggler onClick={() => this.setState({ showNavbarBasic: !this.state.showNavbarBasic })}>

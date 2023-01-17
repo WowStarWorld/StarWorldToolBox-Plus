@@ -27,9 +27,7 @@ export class App extends React.Component<AppProperties> {
         };
     }
 
-    componentDidMount() {
-        let that = this;
-    }
+    componentDidMount() {}
 
     render () {
         let that = this;

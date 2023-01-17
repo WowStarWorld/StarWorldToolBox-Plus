@@ -43,7 +43,7 @@ export class AppButtons extends React.Component<any, ButtonsProps> {
             <>
                 <FloatButton.Group trigger="click" icon={<PlusCircleOutlined/>}>
                     {
-                        (location.hash != "#/settings")
+                        (location.hash !== "#/settings")
                             ? <FloatButton icon={<SettingOutlined/>} tooltip="设置" href="#/settings"/>
                             : <FloatButton icon={<RestOutlined/>} tooltip="重置" onClick={() => {localStorage.clear(); location.reload();}}/>
                     }
