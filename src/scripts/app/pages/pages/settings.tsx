@@ -51,6 +51,13 @@ export class Component extends React.Component {
                                 defaultValue={config.getStorageItem("general.tabs.position", "left")}
                                 onSelect={(value) => config.setStorageItem("general.tabs.position", value)}
                             />
+                        </MDBInputGroup><br/>
+                        <MDBInputGroup textBefore="顶部导航栏显示:" noBorder>
+                            <Select
+                                options={[{label: "跟随", value: true}, {label: "固定", value: false}]}
+                                defaultValue={config.getStorageItem("general.navbar.sticky", true)}
+                                onSelect={(value) => config.setStorageItem("general.navbar.sticky", value)}
+                            />
                         </MDBInputGroup>
                     </>
                 )

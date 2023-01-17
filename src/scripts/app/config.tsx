@@ -1,4 +1,4 @@
-import { get as lodashGet, set as lodashSet, hasIn as lodashHasIn } from "lodash";
+import { get as lodashGet, set as lodashSet, hasIn as lodashHasIn } from "lodash-es";
 
 
 if (typeof localStorage !== "undefined" && localStorage.getItem("settings")) {

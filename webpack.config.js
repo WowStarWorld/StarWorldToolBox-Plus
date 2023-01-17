@@ -35,7 +35,7 @@ const webpackPlugins = [
     ),
     new MiniCSSExtractPlugin(
         {
-            filename: '[name].[hash].css',
+            filename: '[name].[fullhash].css',
             chunkFilename: "[id].css"
         }
     ),
@@ -71,7 +71,7 @@ const config = {
     output: {
         path: path.resolve(__dirname, "dist"),
         chunkFilename: '[name].js',
-        filename: "[name].[hash].js",
+        filename: "[name].[fullhash].js",
     },
     devServer: {
         open: true,
@@ -116,6 +116,7 @@ const config = {
             {
                 test: /\.(js|jsx)$/i,
                 loader: "babel-loader",
+                include: path.resolve(__dirname, 'src')
             },
             {
                 test: /\.s[ac]ss$/i,
