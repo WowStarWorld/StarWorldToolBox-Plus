@@ -34,18 +34,18 @@ export class RandomIconComponent extends React.Component<RandomIconProps, Random
     render () { return <MDBIcon icon={this.state.currentText} />; /* 渲染 */ }
 }
 
-export const AllCategories: {[index: string]: {title: string | JSX.Element, childrens: any[]}} = {
+export const AllCategories: {[index: string]: {title: string | JSX.Element, children: any[]}} = {
     all: {
         title: <><RandomIconComponent list={['earth-africa', 'earth-americas', 'earth-asia', 'earth-europe', 'earth-oceania']} timeout={250}/> 全部工具</>,
-        childrens: [],
+        children: [],
     },
     programming: {
         title: <><MDBIcon icon="code"/> 编程工具</>,
-        childrens: [],
+        children: [],
     },
     other: {
         title: <><MDBIcon icon="cube"/> 其他工具</>,
-        childrens: [],
+        children: [],
     }
 };
 
@@ -60,9 +60,9 @@ export function registerTool (buttonName: string, path: string, icon: string[] |
         </MDBBtn>
     );
     if (typeof category === "string" && category in AllCategories) {
-        AllCategories[category].childrens.push(callback);
+        AllCategories[category].children.push(callback);
     }
-    AllCategories["all"].childrens.push(callback);
+    AllCategories["all"].children.push(callback);
     return callback;
 }
 
@@ -74,14 +74,14 @@ export class AppTabs extends React.Component<TabProps, any> {
     getItems () {
         return Object.values(AllCategories).map(
             (value, index) => {
-                let childrens: JSX.Element[] = value.childrens.map(
+                let children: JSX.Element[] = value.children.map(
                     (_value, _index) => _value(_index)
                 );
-                if (childrens.length <= 0) childrens = [ <h4 key={0}>暂无内容</h4> ];
+                if (children.length <= 0) children = [ <h4 key={0}>暂无内容</h4> ];
                 return {
                     label: (<>&nbsp;&nbsp;{value.title}&nbsp;&nbsp;</>),
                     children: (
-                        <>{...childrens}</>
+                        <>{...children}</>
                     ),
                     key: `${this.props.appid}-tabs-${index}`
                 };
